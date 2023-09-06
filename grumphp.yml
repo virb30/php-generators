@@ -1,0 +1,24 @@
+grumphp:
+  git_hook_variables:
+    EXEC_GRUMPHP_COMMAND:
+      [
+        "docker-compose",
+        "run",
+        "-T",
+        "--rm",
+        "--no-deps",
+        "-e",
+        "TERM=xterm-256color",
+        "php",
+      ]
+  fixer:
+    enabled: true
+    fix_by_default: true
+  tasks:
+    phpunit:
+      metadata:
+        priority: 0
+    phpcsfixer:
+      config: .php_cs.dist.php
+      metadata:
+        priority: 2
