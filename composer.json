@@ -4,7 +4,8 @@
     "decription": "Test with php generators",
     "autoload": {
         "psr-4": {
-            "App\\": "src/"
+            "App\\": "src/",
+            "Db\\": "db/"
         }
     },
     "autoload-dev": {
@@ -22,5 +23,9 @@
         "allow-plugins": {
             "phpro/grumphp": true
         }
+    },
+    "require": {
+        "robmorgan/phinx": "^0.13.4",
+        "fzaninotto/faker": "^1.5"
     }
 }

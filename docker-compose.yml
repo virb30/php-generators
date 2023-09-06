@@ -28,6 +28,8 @@ services:
       - .:/var/www/html
     user: ${UID}:${GID}
     working_dir: /var/www/html
+    depends_on:
+      - db
   composer:
     image: composer
     volumes:
@@ -36,6 +38,16 @@ services:
     depends_on:
       - php
     command: composer install
+  db:
+    image: mysql:8
+    volumes:
+      - ./.docker/mysql:/var/lib/mysql
+    environment:
+      MYSQL_DATABASE: generators
+      MYSQL_ROOT_PASSWORD: root
+    networks:
+      - internal
+    restart: always
 
 networks:
   internal:
